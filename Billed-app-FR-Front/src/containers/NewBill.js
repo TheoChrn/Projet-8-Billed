@@ -18,21 +18,22 @@ export default class NewBill {
   handleChangeFile = e => {
     e.preventDefault()
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
+    console.log(file)
+    const extension = ["image/jpg", "image/jpeg", "image/png"]
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
     const formData = new FormData()
     const email = JSON.parse(localStorage.getItem("user")).email
-    const regex = /\.(png|jpe?g)$/i
     const error = document.createElement('span')
     error.innerHTML = 'mauvais format'
     formData.append('file', file)
     formData.append('email', email)
 
-    if (!fileName.match(regex)) {
+    console.log(file.type)
+    if (!extension.includes(file.type)) {
       console.log('ça ne match pas')
       this.document.querySelector(`input[data-testid="file"]`).parentElement.append(error)
-    } else {
-      console.log('ça match')
+      return
     }
 
     this.store
@@ -67,10 +68,12 @@ export default class NewBill {
       fileName: this.fileName,
       status: 'pending'
     }
+    console.log('toto')
     this.updateBill(bill)
     this.onNavigate(ROUTES_PATH['Bills'])
   }
 
+  /* istanbul ignore next */
   // not need to cover this function by tests
   updateBill = (bill) => {
     if (this.store) {
