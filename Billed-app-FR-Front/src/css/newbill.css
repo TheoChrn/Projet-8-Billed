@@ -9,9 +9,9 @@
 }
 
 .col-half-row {
-  display:flex;
+  display: flex;
   width: 75%;
-  margin-left: 20px;
+  margin: auto;
   margin-top: 16px;
 }
 
@@ -31,6 +31,10 @@ label {
 
 .flex-col {
   margin-left: 50px;
+}
+
+.flex-col:nth-child(1) {
+  margin-left: 0px;
 }
 
 .white-text {

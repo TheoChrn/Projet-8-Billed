@@ -80,8 +80,8 @@ export default class {
 
   handleClickIconEye = () => {
     const billUrl = $('#icon-eye-d').attr("data-bill-url")
-    const imgWidth = Math.floor($('#modaleFileAdmin1').width() * 0.8)
-    $('#modaleFileAdmin1').find(".modal-body").html(`<div style='text-align: center;'><img width=${imgWidth} src=${billUrl} alt="Bill"/></div>`)
+    const imgWidth = Math.floor($('#modaleFileAdmin1').width() * 0.5)
+    $('#modaleFileAdmin1').find(".modal-body").html(`<div style='text-align: center;'><img width=${imgWidth + (766 - imgWidth)} src=${billUrl} alt="Bill"/></div>`)
     if (typeof $('#modaleFileAdmin1').modal === 'function') $('#modaleFileAdmin1').modal('show')
   }
 
@@ -146,7 +146,7 @@ export default class {
     }
 
     bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => {
+      $(`#open-bill${bill.id}`).unbind('click').click((e) => {
         console.log(e)
         this.handleEditTicket(e, bill, bills)})
     })
