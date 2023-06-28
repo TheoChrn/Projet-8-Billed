@@ -35,6 +35,7 @@ describe("Given I am connected as an employee", () => {
       const antiChrono = (a, b) => ((a < b) ? 1 : -1) 
       const datesSorted = [...dates].sort(antiChrono)
       expect(dates).toEqual(datesSorted)
+      j
     })
   })
 })
