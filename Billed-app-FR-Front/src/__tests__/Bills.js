@@ -40,7 +40,6 @@ describe("Given I am connected as an employee", () => {
       const antiChrono = (a, b) => ((a < b) ? 1 : -1) 
       const datesSorted = [...dates].sort(antiChrono)
       expect(dates).toEqual(datesSorted)
-      j
     })
     test("Then new bill button should redirect me to the right page", () => {
       const html = BillsUI({ data: bills })

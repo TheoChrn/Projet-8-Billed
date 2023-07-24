@@ -25,11 +25,11 @@ export default class NewBill {
     const formData = new FormData()
     const email = JSON.parse(localStorage.getItem("user")).email
     const error = document.createElement('span')
-    error.textContent = 'mauvais format'
     formData.append('file', file)
     formData.append('email', email)
 
     if (!extension.includes(file.type)) {
+      error.textContent = 'mauvais format'
       return
     }
 
@@ -65,7 +65,6 @@ export default class NewBill {
       fileName: this.fileName,
       status: 'pending'
     }
-    console.log('toto')
     this.updateBill(bill)
     this.onNavigate(ROUTES_PATH['Bills'])
   }
